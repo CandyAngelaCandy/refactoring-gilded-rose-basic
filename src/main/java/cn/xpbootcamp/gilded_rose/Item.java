@@ -40,15 +40,15 @@ public class Item {
             return;
         }
 
+        updateNormalItemQuality();
+    }
+
+    private void updateNormalItemQuality() {
         quality = quality - 1;
         if (sellIn < 0) {
             quality = quality - 1;
         }
-
         quality = Math.max(0, quality);
-        if (quality > 50) {
-            quality = 50;
-        }
     }
 
     private void updateAgedBrieQuality() {
