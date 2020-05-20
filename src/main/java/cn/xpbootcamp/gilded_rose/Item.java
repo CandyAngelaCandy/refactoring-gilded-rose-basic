@@ -31,16 +31,7 @@ public class Item {
         sellIn = sellIn - 1;
 
         if (name.equals(BACKSTAGE_PASSES)) {
-            if (sellIn < 0) {
-                quality = 0;
-            } else if (sellIn < 5) {
-                quality = quality + 3;
-            } else if (sellIn < 10) {
-                quality = quality + 2;
-            } else {
-                quality = quality + 1;
-            }
-            quality = Math.min(50, quality);
+            updateBackstagePassesQuality();
             return;
         }
 
@@ -64,5 +55,18 @@ public class Item {
         if (quality > 50) {
             quality = 50;
         }
+    }
+
+    private void updateBackstagePassesQuality() {
+        if (sellIn < 0) {
+            quality = 0;
+        } else if (sellIn < 5) {
+            quality = quality + 3;
+        } else if (sellIn < 10) {
+            quality = quality + 2;
+        } else {
+            quality = quality + 1;
+        }
+        quality = Math.min(50, quality);
     }
 }
