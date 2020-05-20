@@ -20,12 +20,16 @@ public class Item {
     }
 
     public void updateItemQuality() {
-        if (name.equals("Sulfuras, Hand of Ragnaros")) {
+        final String SULFURAS = "Sulfuras, Hand of Ragnaros";
+        final String AGED_BRIE = "Aged Brie";
+        final String BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
+
+        if (name.equals(SULFURAS)) {
             return;
         }
 
-        if (!name.equals("Aged Brie")
-                && !name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+        if (!name.equals(AGED_BRIE)
+                && !name.equals(BACKSTAGE_PASSES)) {
             if (quality > 0) {
                 quality = quality - 1;
             }
@@ -33,7 +37,7 @@ public class Item {
             if (quality < 50) {
                 quality = quality + 1;
 
-                if (name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                if (name.equals(BACKSTAGE_PASSES)) {
                     if (sellIn < 11) {
                         if (quality < 50) {
                             quality = quality + 1;
@@ -52,8 +56,8 @@ public class Item {
         sellIn = sellIn - 1;
 
         if (sellIn < 0) {
-            if (!name.equals("Aged Brie")) {
-                if (!name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+            if (!name.equals(AGED_BRIE)) {
+                if (!name.equals(BACKSTAGE_PASSES)) {
                     if (quality > 0) {
                         quality = quality - 1;
                     }
