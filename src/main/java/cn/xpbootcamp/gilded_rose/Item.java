@@ -31,24 +31,24 @@ public class Item {
         sellIn = sellIn - 1;
 
         if (name.equals(BACKSTAGE_PASSES)) {
-            if (sellIn < 10) {
-                quality = quality + 1;
-            }
-            if (sellIn < 5) {
-                quality = quality + 1;
-            }
             if (sellIn < 0) {
                 quality = 0;
+            } else if (sellIn < 5) {
+                quality = quality + 3;
+            } else if (sellIn < 10) {
+                quality = quality + 2;
+            } else {
+                quality = quality + 1;
             }
-            quality = quality + 1;
+            quality = Math.min(50, quality);
+            return;
         }
 
         if (name.equals(AGED_BRIE)) {
             quality = quality + 1;
-         }
+        }
 
-        if (!name.equals(AGED_BRIE)
-                && !name.equals(BACKSTAGE_PASSES)) {
+        if (!name.equals(AGED_BRIE)) {
             quality = quality - 1;
         }
 
