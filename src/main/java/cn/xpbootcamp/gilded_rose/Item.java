@@ -36,25 +36,27 @@ public class Item {
         }
 
         if (name.equals(AGED_BRIE)) {
-            quality = quality + 1;
+            updateAgedBrieQuality();
+            return;
         }
 
-        if (!name.equals(AGED_BRIE)) {
-            quality = quality - 1;
-        }
-
+        quality = quality - 1;
         if (sellIn < 0) {
-            if (!name.equals(AGED_BRIE)) {
-                quality = quality - 1;
-            } else {
-                quality = quality + 1;
-            }
+            quality = quality - 1;
         }
 
         quality = Math.max(0, quality);
         if (quality > 50) {
             quality = 50;
         }
+    }
+
+    private void updateAgedBrieQuality() {
+        quality = quality + 1;
+        if (sellIn < 0) {
+            quality = quality + 1;
+        }
+        quality = Math.min(50, quality);
     }
 
     private void updateBackstagePassesQuality() {
