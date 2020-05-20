@@ -28,21 +28,21 @@ public class Item {
             return;
         }
 
+        if (name.equals(BACKSTAGE_PASSES)) {
+            if (sellIn < 11) {
+                quality = quality + 1;
+            }
+
+            if (sellIn < 6) {
+                quality = quality + 1;
+            }
+        }
+
         if (!name.equals(AGED_BRIE)
                 && !name.equals(BACKSTAGE_PASSES)) {
             quality = quality - 1;
         } else {
             quality = quality + 1;
-
-            if (name.equals(BACKSTAGE_PASSES)) {
-                if (sellIn < 11) {
-                    quality = quality + 1;
-                }
-
-                if (sellIn < 6) {
-                    quality = quality + 1;
-                }
-            }
         }
 
         sellIn = sellIn - 1;
