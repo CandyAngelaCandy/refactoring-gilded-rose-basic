@@ -28,13 +28,19 @@ public class Item {
             return;
         }
 
+        sellIn = sellIn - 1;
+
         if (name.equals(BACKSTAGE_PASSES)) {
-            if (sellIn < 11) {
+            if (sellIn < 10) {
                 quality = quality + 1;
             }
 
-            if (sellIn < 6) {
+            if (sellIn < 5) {
                 quality = quality + 1;
+            }
+
+            if (sellIn < 0) {
+                quality = 0;
             }
         }
 
@@ -45,23 +51,19 @@ public class Item {
             quality = quality + 1;
         }
 
-        sellIn = sellIn - 1;
-
         if (sellIn < 0) {
             if (!name.equals(AGED_BRIE)) {
-                if (!name.equals(BACKSTAGE_PASSES)) {
-                    quality = quality - 1;
-                } else {
-                    quality = 0;
-                }
-            } else {
-                quality = quality + 1;
-            }
-        }
-
-        quality = Math.max(0, quality);
-        if (quality > 50) {
-            quality = 50;
+                quality = quality - 1;
+        } else {
+            quality = quality + 1;
         }
     }
+
+    quality =Math.max(0,quality);
+        if(quality >50)
+
+    {
+        quality = 50;
+    }
+}
 }
